@@ -13,28 +13,9 @@
 
 <body>
   <header>
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/images/ho.svg" alt="" />
-      </a>
-      <div class="blc-user">
-        <img src="assets/images/icon-feather-user.svg" alt="" />
-        <span>
-          Olá, <br />
-          Lorem Ipsum
-        </span>
-        <img src="assets/images/arrow-down.svg" alt="" />
-        <div class="menu-drop">
-          <a href="gerenciamento-cliente.html">Gerenciar clientes</a>
-          <a href="gerenciamento-produto.html">Gerenciar produtos</a>
-          <a href="cadastro-cliente.html">Cadastrar cliente</a>
-          <a href="cadastro-usuario.html">Cadastrar usuário</a>
-          <a href="cadastro-produto.html">Cadastrar produto</a>
-          <a href="novo-pedido.html">Novo pedido</a>
-          <a href="#">Sair da conta</a>
-        </div>
-      </div>
-    </div>
+  <?php
+      require_once 'header.php';
+    ?>
   </header>
   <section class="page-cadastro-produto paddingBottom50">
     <div class="container">

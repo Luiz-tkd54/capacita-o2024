@@ -16,7 +16,7 @@
           <a href="usuario.php">Cadastrar usuário</a>
           <a href="cad-produto.php">Cadastrar produto</a>
           <a href="pedidos.php">Novo pedido</a>
-          <a href="#">Sair da conta</a>
+          <a href="login.php">Sair da conta</a>
         </div>
       </div>
 
