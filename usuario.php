@@ -32,8 +32,8 @@
               <input type="text" class="nome-input" name="nome">
             </div>
             <div>
-              <label class="input-label">E-mail</label>
-              <input type="text" class="email-input" name="email">
+              <label class="input-label">Data de Nascimento</label>
+              <input type="date" class="date-input" name="data">
             </div>
             <div>
               <label class="input-label">CPF</label>
@@ -42,6 +42,10 @@
             <div>
               <label class="input-label">Telefone</label>
               <input type="tel" class="telefone-input" name="telefone">
+            </div>
+            <div>
+              <label class="input-label">E-mail</label>
+              <input type="text" class="email-input" name="email">
             </div>
             <div>
               <label class="input-label">Senha</label>
