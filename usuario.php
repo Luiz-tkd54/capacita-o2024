@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="stylesheet" href="https://use.typekit.net/tvf0cut.css">
 </head>
+<!-- busca de arquivo da class usuario -->
+<?php
+  require_once 'class/cadastro.php';
+  $u = new Usuario("capacitacao2024","localhost","root","");  
+?>
 
 <body>
   <header>
@@ -19,13 +24,36 @@
   <section class="page-cadastro-usuario paddingBottom50">
     <div class="container">
       <div>
-        <a href="index.html" class="link-voltar">
+        <a href="dashboard.php" class="link-voltar">
           <img src="assets/images/arrow.svg" alt="">
           <span>Cadastro de usuário</span>
         </a>
       </div>
+      <?php
+      if (isset($_POST['nome'])){
+        // proteção de codigos maliciosos
+        $nome = addslashes($_POST['nome']); 
+        $data_nascimento = addslashes($_POST['data']);
+        $cpf = addslashes($_POST['cpf']);
+        $telefone = addslashes($_POST['telefone']);
+        $email = addslashes($_POST['email']);
+        $senha = addslashes($_POST['senha']);
+        // validacao  de preenchimento obrigatorio
+        if(!empty($nome) && !empty($data_nascimento) && !empty($cpf) &&
+           !empty($telefone) && !empty($email) && !empty($senha)){
+          //cadastrar
+          if(!$u->cadastrarUsuario($nome, $data_nascimento, $cpf, $telefone, $email, $senha )){
+            echo "Email ja esta cadastrado";
+          }
+          
+        }else{
+            echo "Preencha todos os campos!";
+        }
+
+      }
+      ?>
       <div class="container-small">
-        <form method="post" id="form-cadastro-usuario">
+        <form method="POST" id="form-cadastro-usuario">
           <div class="bloco-inputs">
             <div>
               <label class="input-label">Nome</label>
