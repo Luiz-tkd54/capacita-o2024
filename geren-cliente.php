@@ -32,6 +32,7 @@
               <th>ID</th>
               <th>Nome</th>
               <th>CPF</th>
+              <th>Data Nascimento</th>
               <th>E-mail</th>
               <th>Telefone</th>
             </tr>
@@ -41,13 +42,15 @@
               <td>1</td>
               <td>Nome Sobrenome</td>
               <td>111.333.555-77</td>
+              <td>10/01/2000</td>
               <td>nome.sobrenome@essentialnutrition.com.br</td>
               <td>(48) 99999-9999</td>
             </tr>
             <tr>
               <td>2</td>
               <td>Nome Sobrenome</td>
-              <td>111.333.555-77</td>
+              <td>111.222.333-77</td>
+              <td>20/02/2000</td>
               <td>nome.sobrenome@essentialnutrition.com.br</td>
               <td>(48) 99999-9999</td>
             </tr>

@@ -34,6 +34,7 @@
               <th>Imagem</th>
               <th>Nome</th>
               <th>SKU</th>
+              <th>QNT</th>
               <th>Descrição</th>
               <th>Valor</th>
             </tr>
@@ -44,6 +45,7 @@
               <td><img src="assets/images/image-happy-theanine.jpg" class="img-produto" alt="" /></td>
               <td>Happy Theanine</td>
               <td>14585</td>
+              <td>100</td>
               <td><span class="descr">Produto formulado com L-teanina pura e concentrada — uma poderosa substância
                   bioativa encontrada
                   naturalmente nas folhas de Camellia sinensis</span></td>
@@ -54,6 +56,7 @@
               <td><img src="assets/images/image-happy-theanine.jpg" class="img-produto" alt="" /></td>
               <td>Happy Theanine</td>
               <td>14585</td>
+              <td>100</td>
               <td><span class="descr">Produto formulado com L-teanina pura e concentrada — uma poderosa substância
                   bioativa encontrada
                   naturalmente nas folhas de Camellia sinensis</span></td>
