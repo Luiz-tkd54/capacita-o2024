@@ -13,8 +13,8 @@
           <a href="geren-cliente.php">Gerenciar clientes</a>
           <a href="geren-produtos.php">Gerenciar produtos</a>
           <a href="cliente.php">Cadastrar cliente</a>
-          <a href="usuario.php">Cadastrar usuário</a>
           <a href="cad-produto.php">Cadastrar produto</a>
+          <a href="usuario.php">Cadastrar usuário</a>
           <a href="pedidos.php">Novo pedido</a>
           <a href="login.php">Sair da conta</a>
         </div>

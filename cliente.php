@@ -19,7 +19,7 @@
   <section class="page-cadastro-cliente paddingBottom50">
     <div class="container">
       <div>
-        <a href="gerenciamento-cliente.html" class="link-voltar">
+        <a href="dashboard.php" class="link-voltar">
           <img src="assets/images/arrow.svg" alt="">
           <span>Cadastro de cliente</span>
         </a>
@@ -32,8 +32,8 @@
               <input type="text" class="nome-input" name="nome">
             </div>
             <div>
-              <label class="input-label">E-mail</label>
-              <input type="text" class="email-input" name="email">
+              <label class="input-label">Data de Nascimento</label>
+              <input type="date" class="data-input" name="data">
             </div>
             <div>
               <label class="input-label">CPF</label>
@@ -43,7 +43,11 @@
               <label class="input-label">Telefone</label>
               <input type="tel" class="telefone-input" name="telefone">
             </div>
-          </div>
+            <div>
+              <label class="input-label">E-mail</label>
+              <input type="text" class="email-input" name="email">
+            </div>
+          </div>            
           <button type="submit" class="button-default">Salvar novo cliente</button>
         </form>
       </div>

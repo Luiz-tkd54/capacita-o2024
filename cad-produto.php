@@ -20,7 +20,7 @@
   <section class="page-cadastro-produto paddingBottom50">
     <div class="container">
       <div>
-        <a href="gerenciamento-produto.html" class="link-voltar">
+        <a href="dashboard.php" class="link-voltar">
           <img src="assets/images/arrow.svg" alt="">
           <span>Cadastro de produto</span>
         </a>
@@ -40,6 +40,10 @@
               <div>
                 <label class="input-label">SKU</label>
                 <input type="text" class="sku-input" name="sku">
+              </div>
+              <div>
+                <label class="input-label">Quantidade</label>
+                <input type="text" class="quantidade-input" name="valor">
               </div>
               <div>
                 <label class="input-label">Valor</label>
