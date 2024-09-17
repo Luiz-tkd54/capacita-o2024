@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="https://use.typekit.net/tvf0cut.css">
 </head>
  
+<?php
+  require_once 'class/cadastro.php';
+  $c = new Cliente("capacitacao2024","localhost","root","");  
+?>
+
 <body>
   <header>
     <?php
@@ -24,6 +29,30 @@
           <span>Cadastro de cliente</span>
         </a>
       </div>
+
+      <?php
+      if (isset($_POST['nome'])){
+        // proteção de codigos maliciosos
+        $nome = addslashes($_POST['nome']); 
+        $cpf = addslashes($_POST['cpf']);
+        $email= addslashes($_POST['email']);
+        $data_nascimento = addslashes($_POST['data']);
+        $telefone = addslashes($_POST['telefone']);
+        // validacao  de preenchimento obrigatorio
+        if(!empty($nome) && !empty($cpf) && !empty($email) &&
+           !empty($data_nascimento) && !empty($telefone)){
+          //cadastrar
+          if(!$c->CadastrarCliente($nome, $cpf, $email, $data_nascimento, $telefone )){
+            echo "Email ja esta cadastrado";
+          }
+          
+        }else{
+            echo "Preencha todos os campos!";
+        }
+
+      }
+      ?>
+
       <div class="container-small">
         <form method="post" id="form-cadastro-cliente">
           <div class="bloco-inputs">
