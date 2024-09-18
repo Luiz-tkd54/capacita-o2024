@@ -12,6 +12,13 @@
 </head>
 
 <body>
+
+  <?php
+    require_once 'class/cadastro.php';
+    $p = new Produto("capacitacao2024","localhost","root","");
+  ?>
+
+
   <header>
   <?php
       require_once 'header.php';
@@ -25,8 +32,41 @@
           <span>Cadastro de produto</span>
         </a>
       </div>
+
+    <?php
+    
+    if (isset($_POST['nome'])){
+      // proteção de codigos maliciosos
+      $nome = addslashes($_POST['nome']); 
+      $sku = addslashes($_POST['sku']);
+      $quantidade= addslashes($_POST['quantidade']);
+      $valor = addslashes($_POST['valor']);
+      $descricao = addslashes($_POST['descricao']);
+      $imagens = $_FILES['imagem'];
+
+      if(!empty($nome) && !empty($sku) && !empty($quantidade) &&
+           !empty($valor) && !empty($descricao)){
+
+          $caminhoImagem = $p->uploadImagem($imagens);
+          
+          if ($caminhoImagem){
+             //cadastrar
+          if(!$p->CadastrarProduto($nome, $sku, $quantidade, $valor, $descricao, $caminhoImagem)){
+            echo "SKU ja esta cadastrado";
+          }
+          
+        }else{
+            echo "Preencha todos os campos!";
+        }
+      
+          }
+      
+    }
+    
+    ?>
+
       <div class="container-small">
-        <form method="post" id="form-cadastro-produto">
+        <form method="post" enctype="multipart/form-data" id="form-cadastro-produto">
           <div class="bloco-inputs">
             <div>
               <label class="input-label">Nome</label>
@@ -34,7 +74,7 @@
             </div>
             <div>
               <label class="input-label">Descrição</label>
-              <textarea class="textarea"></textarea>
+              <textarea class="textarea" name ="descricao"></textarea>
             </div>
             <div class="flex-2">
               <div>
@@ -43,7 +83,7 @@
               </div>
               <div>
                 <label class="input-label">Quantidade</label>
-                <input type="text" class="quantidade-input" name="valor">
+                <input type="text" class="quantidade-input" name="quantidade">
               </div>
               <div>
                 <label class="input-label">Valor</label>
@@ -52,7 +92,7 @@
             </div>
             <div>
               <label class="bt-arquivo" for="bt-arquivo">Adicionar imagem</label>
-              <input id="bt-arquivo" type="file">
+              <input id="bt-arquivo" type="file" name= "imagem">
             </div>
           </div>
           <button type="submit" class="button-default">Salvar novo produto</button>
