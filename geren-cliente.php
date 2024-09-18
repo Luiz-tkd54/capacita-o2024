@@ -23,7 +23,7 @@
           <img src="assets/images/arrow.svg" alt="">
           <span>Gerenciamento de cliente</span>
         </a>
-        <a href="clientes.php" class="button-default bt-add">Adicionar novo cliente</a>
+        <a href="cliente.php" class="button-default bt-add">Adicionar novo cliente</a>
       </div>
       <div class="shadow-table">
         <table>

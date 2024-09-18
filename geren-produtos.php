@@ -24,7 +24,7 @@
           <img src="assets/images/arrow.svg" alt="">
           <span>Gerenciamento de produto</span>
         </a>
-        <a href="produtos.php" class="bt-add">Adicionar novo produto</a>
+        <a href="cad-produto.php" class="bt-add">Adicionar novo produto</a>
       </div>
       <div class="shadow-table">
         <table>
