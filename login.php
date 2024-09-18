@@ -42,6 +42,9 @@
               <label class="input-label-password">Senha</label>
               <input type="password" class="password-input" id="data-password" name="password">
             </div>
+            <div 
+              class="faça-cadastro">Ainda não é cadastrado? <a href="cadastre-se.php">Cadastre-se</a>
+            </div>
           </div>
           <button type="submit" class="button-default">Continuar</button>
         </form>
