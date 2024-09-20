@@ -53,6 +53,8 @@
              //cadastrar
           if(!$p->CadastrarProduto($nome, $sku, $quantidade, $valor, $descricao, $caminhoImagem)){
             echo "SKU ja esta cadastrado";
+          }else{
+            echo "Produto cadastrado com sucesso!";
           }
           
         }else{

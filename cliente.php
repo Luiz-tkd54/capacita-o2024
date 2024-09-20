@@ -44,6 +44,8 @@
           //cadastrar
           if(!$c->CadastrarCliente($nome, $cpf, $email, $data_nascimento, $telefone )){
             echo "Email ja esta cadastrado";
+          }else{
+            echo "Cliente cadastrado com sucesso!";
           }
           
         }else{

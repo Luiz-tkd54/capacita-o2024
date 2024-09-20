@@ -44,6 +44,8 @@
           //cadastrar
           if(!$u->cadastrarUsuario($nome, $data_nascimento, $cpf, $telefone, $email, $senha )){
             echo "Email ja esta cadastrado";
+          }else{
+            echo "Usuario cadastrado com sucesso!";
           }
           
         }else{
