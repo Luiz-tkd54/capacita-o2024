@@ -19,6 +19,24 @@
       </a>
     </div>
   </header>
+  <?php
+    session_start();
+    require_once './class/cadastro.php';
+    $usuario = new Usuario("capacitacao2024","localhost","root","");
+
+    if($_SERVER['REQUEST_METHOD']== 'POST'){
+      $email = addslashes($_POST['email']); 
+      $senha = addslashes($_POST['password']);
+
+      if($usuario->login($email, $senha)){
+        $_SESSION['usuario']= $email;
+        header("Location: dashboard.php");
+        exit();
+      }else{ 
+        echo "Email ou senha invalidos";
+      }
+    }
+  ?>
   <section class="page-login">
     <div class="container-login">
       <div>

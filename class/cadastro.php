@@ -33,7 +33,7 @@ class Usuario{
         $cadusuario->execute();
         // email ja existe
         if ($cadusuario->rowCount() > 0){
-            return false;
+            return false;    
         // email nao existe  
         }else{
             // criptografia
@@ -50,7 +50,24 @@ class Usuario{
             return true;
         }
     }
-}
+// -----------------------LOGIN ---------------------------------------------------------------
+   
+    public function Login($email, $senha){
+        $senha_criptografada = sha1($senha);
+        $login = $this->pdo->prepare("SELECT id FROM usuario WHERE email = :e AND senha = :s");
+        $login->bindValue(":e",$email);
+        $login->bindValue(":s",$senha_criptografada);
+        $login->execute();
+
+        if($login->rowCount() > 0){
+            // login bem sucedido
+            return true;
+        }else{
+            // credenciais invalidas
+            return false;
+        }
+    }
+}   
 
 // -------------------------CADASTRO DE CLIENTE---------------------------------------------------------------------
 class Cliente {
