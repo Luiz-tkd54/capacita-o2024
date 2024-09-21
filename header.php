@@ -6,7 +6,8 @@
         <img src="assets/images/icon-feather-user.svg" alt="" />
         <span>
           Olá, <br />
-          Lorem Ipsum
+          <!-- exibe o nome cadastrado no banco de dados -->
+          <?php echo htmlspecialchars($_SESSION['usuario']); ?>
         </span>
         <img src="assets/images/arrow-down.svg" alt="" />
         <div class="menu-drop">

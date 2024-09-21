@@ -29,7 +29,8 @@
       $senha = addslashes($_POST['password']);
 
       if($usuario->login($email, $senha)){
-        $_SESSION['usuario']= $email;
+        $usuarioInfo = $usuario->nomeMenu($email);
+        $_SESSION['usuario']= $usuarioInfo['nome'];
         header("Location: dashboard.php");
         exit();
       }else{ 

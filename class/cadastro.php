@@ -67,6 +67,16 @@ class Usuario{
             return false;
         }
     }
+
+//---------------------NOME NO DROPMENU ----------------------------------------------------------
+
+    public function nomeMenu($email){
+      
+        $buscaDeNome = $this->pdo->prepare("SELECT nome FROM usuario WHERE email = ?");
+        $buscaDeNome->execute([$email]);
+        return $buscaDeNome->fetch(PDO::FETCH_ASSOC);
+    }
+
 }   
 
 // -------------------------CADASTRO DE CLIENTE---------------------------------------------------------------------
