@@ -53,12 +53,12 @@
       $quantidade= addslashes($_POST['quantidade']);
       $valor = addslashes($_POST['valor']);
       $descricao = addslashes($_POST['descricao']);
-      $imagens = $_FILES['imagem'];
+      $imagem = $_FILES['imagem'];
 
       if(!empty($nome) && !empty($sku) && !empty($quantidade) &&
            !empty($valor) && !empty($descricao)){
 
-          $caminhoImagem = $p->uploadImagem($imagens);
+          $caminhoImagem = $p->uploadImagem($imagem);
           
           if ($caminhoImagem){
              //cadastrar

@@ -141,7 +141,7 @@ class Produto {
         }   
     }   
 
-    public function CadastrarProduto($nome, $sku, $quantidade, $valor, $descricao, $imagens){
+    public function CadastrarProduto($nome, $sku, $quantidade, $valor, $descricao, $imagem){
 
         $cadProduto = $this->pdo->prepare('SELECT id FROM produto WHERE sku = :s');
         $cadProduto->bindValue(':s', $sku);
@@ -150,25 +150,25 @@ class Produto {
         if($cadProduto->rowCount() > 0){
             return false;
         }else{
-            $cadProduto = $this->pdo->prepare('INSERT INTO produto (nome, sku, quantidade, valor, descricao, imagens)
+            $cadProduto = $this->pdo->prepare('INSERT INTO produto (nome, sku, quantidade, valor, descricao, imagem)
             VALUES (:n, :s, :q, :v, :d, :i)');
             $cadProduto->bindValue(":n", $nome);
             $cadProduto->bindValue(":s", $sku);
             $cadProduto->bindValue(":q", $quantidade);
             $cadProduto->bindValue(":v", $valor);
             $cadProduto->bindValue(":d",$descricao);
-            $cadProduto->bindValue(":i",$imagens);
+            $cadProduto->bindValue(":i",$imagem);
             $cadProduto->execute();
             return true;
         }
     }
 
-    public function uploadImagem($imagens){
+    public function uploadImagem($imagem){
 
         $uploadDiretorio = 'arquivo/';
-        $uploadFile = $uploadDiretorio . basename($imagens['name']);
+        $uploadFile = $uploadDiretorio . basename($imagem['name']);
 
-        if(move_uploaded_file($imagens['tmp_name'], $uploadFile)){
+        if(move_uploaded_file($imagem['tmp_name'], $uploadFile)){
             return $uploadFile;
         }else{
             echo "Erro ao salvar a imagem.";

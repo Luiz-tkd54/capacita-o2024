@@ -26,7 +26,10 @@
   <header>
     <?php
         require_once 'header.php';
+        require_once 'class/gerenciamento.php';
+        $b = new Busca("capacitacao2024","localhost","root","");
     ?>
+
   </header>
   <section class="page-gerenciamento-produto paddingBottom50">
     <div class="container">
@@ -35,7 +38,7 @@
           <img src="assets/images/arrow.svg" alt="">
           <span>Gerenciamento de produto</span>
         </a>
-        <a href="cad-produto.php" class="bt-add">Adicionar novo produto</a>
+        <a href="produtos.php" class="bt-add">Adicionar novo produto</a>
       </div>
       <div class="shadow-table">
         <table>
@@ -48,32 +51,36 @@
               <th>QNT</th>
               <th>Descrição</th>
               <th>Valor</th>
+              <th></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td><img src="assets/images/image-happy-theanine.jpg" class="img-produto" alt="" /></td>
-              <td>Happy Theanine</td>
-              <td>14585</td>
-              <td>100</td>
-              <td><span class="descr">Produto formulado com L-teanina pura e concentrada — uma poderosa substância
-                  bioativa encontrada
-                  naturalmente nas folhas de Camellia sinensis</span></td>
-              <td>R$ 160,00</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><img src="assets/images/image-happy-theanine.jpg" class="img-produto" alt="" /></td>
-              <td>Happy Theanine</td>
-              <td>14585</td>
-              <td>100</td>
-              <td><span class="descr">Produto formulado com L-teanina pura e concentrada — uma poderosa substância
-                  bioativa encontrada
-                  naturalmente nas folhas de Camellia sinensis</span></td>
-              <td>R$ 160,00</td>
-            </tr>
-          </tbody>
+          <?php
+          
+            $dados = $b->buscarProdutos();
+            if(count($dados) > 0){
+              for ($i=0; $i < count($dados); $i++) { 
+                echo "<tr>";
+                foreach ($dados[$i] as $k => $v) {
+                  echo "<td>".$v."</td>";
+                }
+          ?>
+                <td>
+                  <a style="text-decoration: none;
+                                 background-color: #367299; 
+                                 color:#fff; border-radius: 4px;" href="">Editar</a> 
+       
+                  <a style="text-decoration: none; 
+                                 background-color: #8d3535;
+                                 color:#fff; border-radius: 4px;" href="">Excluir</a>
+                </td>
+          <?php
+                echo "</tr>"; 
+              }
+         
+            }else{
+              echo "Nenhum produto cadastrado!";
+            }
+          ?>
         </table>
       </div>
     </div>
