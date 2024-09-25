@@ -1,6 +1,6 @@
 <?php
 
-class Busca{
+class Tabela{
 
 // conexão
 private $pdo;
@@ -21,7 +21,7 @@ public function __construct($dbname, $host, $user, $password)
         exit();
     }
 }
-// -----------------BUSCA TABELA PRODUTOS ---------------------------------------
+// -----------------TABELA PRODUTOS ---------------------------------------
 
     public function buscarProdutos(){
         $busca = array();
@@ -31,7 +31,13 @@ public function __construct($dbname, $host, $user, $password)
         return $busca;
     }
 
-// ---------------------- BUSCA TABELA CLIENTES -------------------------------
+    public function excluirProduto($id){
+        $excluir = $this->pdo->prepare("DELETE FROM produto WHERE id = :id");
+        $excluir->bindValue(":id",$id);
+        $excluir->execute();
+    }
+
+// ---------------------- TABELA CLIENTES -------------------------------
 
     public function buscarClientes(){
         $busca = array();
@@ -41,6 +47,11 @@ public function __construct($dbname, $host, $user, $password)
         return $busca;
     }
 
+    public function excluirCliente($id){
+        $excluir = $this->pdo->prepare("DELETE FROM cliente WHERE id = :id");
+        $excluir->bindValue(":id",$id);
+        $excluir->execute();
+    }
 
 
 }

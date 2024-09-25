@@ -25,6 +25,8 @@
   <header>
     <?php
         require_once 'header.php';
+        require_once 'class/gerenciamento.php';
+        $t = new Tabela("capacitacao2024","localhost","root","");
     ?>
   </header>
   <section class="page-gerenciamento-cliente paddingBottom50">
@@ -46,26 +48,38 @@
               <th>Data Nascimento</th>
               <th>E-mail</th>
               <th>Telefone</th>
+              <th></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Nome Sobrenome</td>
-              <td>111.333.555-77</td>
-              <td>10/01/2000</td>
-              <td>nome.sobrenome@essentialnutrition.com.br</td>
-              <td>(48) 99999-9999</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Nome Sobrenome</td>
-              <td>111.222.333-77</td>
-              <td>20/02/2000</td>
-              <td>nome.sobrenome@essentialnutrition.com.br</td>
-              <td>(48) 99999-9999</td>
-            </tr>
-          </tbody>
+          <?php
+          
+          $dados = $t->buscarClientes();
+          if(count($dados) > 0){
+            for ($i=0; $i < count($dados); $i++) { 
+              echo "<tr>";
+              foreach ($dados[$i] as $k => $v) {
+                echo "<td>".$v."</td>";
+              }
+        ?>
+              <td>
+                <a style="text-decoration: none;
+                          background-color: #367299; 
+                          color:#fff; border-radius: 4px;"
+                           href="">Editar</a> 
+     
+                <a style="text-decoration: none; 
+                          background-color: #8d3535;
+                          color:#fff; border-radius: 4px;"
+                          href="geren-cliente.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
+              </td>
+        <?php
+              echo "</tr>"; 
+            }
+       
+          }else{
+            echo "Nenhum produto cadastrado!";
+          }
+        ?>
         </table>
       </div>
     </div>
@@ -73,3 +87,12 @@
 </body>
 
 </html>
+
+<!-- botao de exluir-->
+
+<?php
+  if(isset($_GET['id'])){
+    $id_cliente = addslashes($_GET['id']);
+    $t->excluirCliente($id_cliente);
+  }
+?>

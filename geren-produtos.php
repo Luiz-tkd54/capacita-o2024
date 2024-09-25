@@ -27,7 +27,7 @@
     <?php
         require_once 'header.php';
         require_once 'class/gerenciamento.php';
-        $b = new Busca("capacitacao2024","localhost","root","");
+        $t = new Tabela("capacitacao2024","localhost","root","");
     ?>
 
   </header>
@@ -38,7 +38,7 @@
           <img src="assets/images/arrow.svg" alt="">
           <span>Gerenciamento de produto</span>
         </a>
-        <a href="produtos.php" class="bt-add">Adicionar novo produto</a>
+        <a href="cad-produto.php" class="bt-add">Adicionar novo produto</a>
       </div>
       <div class="shadow-table">
         <table>
@@ -56,7 +56,7 @@
           </thead>
           <?php
           
-            $dados = $b->buscarProdutos();
+            $dados = $t->buscarProdutos();
             if(count($dados) > 0){
               for ($i=0; $i < count($dados); $i++) { 
                 echo "<tr>";
@@ -70,13 +70,15 @@
                 }
           ?>
                 <td>
-                  <a style="text-decoration: none;
-                                 background-color: #367299; 
-                                 color:#fff; border-radius: 4px;" href="">Editar</a> 
+                    <a style="text-decoration: none;
+                              background-color: #367299; 
+                              color:#fff; border-radius: 4px;" 
+                              href="">Editar</a> 
        
-                  <a style="text-decoration: none; 
-                                 background-color: #8d3535;
-                                 color:#fff; border-radius: 4px;" href="">Excluir</a>
+                    <a style="text-decoration: none; 
+                              background-color: #8d3535;
+                              color:#fff; border-radius: 4px;"
+                              href="geren-produtos.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
                 </td>
           <?php
                 echo "</tr>"; 
@@ -91,5 +93,12 @@
     </div>
   </section>
 </body>
-
 </html>
+<!-- botao de exluir  -->
+
+<?php
+  if(isset($_GET['id'])){
+    $id_produto = addslashes($_GET['id']);
+    $t->excluirProduto($id_produto);
+  }
+?>
