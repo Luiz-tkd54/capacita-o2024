@@ -39,7 +39,7 @@ public function __construct($dbname, $host, $user, $password)
 
 // ---------------------- TABELA CLIENTES -------------------------------
 
-    public function buscarClientes(){
+    public function buscarCliente(){
         $busca = array();
         $cliente = $this->pdo->prepare("SELECT *FROM cliente ORDER BY nome");
         $cliente->execute();
@@ -49,6 +49,22 @@ public function __construct($dbname, $host, $user, $password)
 
     public function excluirCliente($id){
         $excluir = $this->pdo->prepare("DELETE FROM cliente WHERE id = :id");
+        $excluir->bindValue(":id",$id);
+        $excluir->execute();
+    }
+
+// -------------------------TABELA USUARIOS ---------------------------------
+
+    public function buscarUsuario(){
+        $busca = array();
+        $usuario = $this->pdo->prepare("SELECT id,nome,cpf,data_nascimento,email,telefone FROM usuario ORDER BY nome");
+        $usuario->execute();
+        $busca = $usuario->fetchAll(PDO::FETCH_ASSOC);
+        return $busca;
+    }
+
+    public function excluirUsuario($id){
+        $excluir = $this->pdo->prepare("DELETE FROM usuario WHERE id = :id");
         $excluir->bindValue(":id",$id);
         $excluir->execute();
     }

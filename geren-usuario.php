@@ -34,9 +34,9 @@
       <div class="d-flex justify-content-between">
         <a href="dashboard.php" class="link-voltar">
           <img src="assets/images/arrow.svg" alt="">
-          <span>Gerenciamento de cliente</span>
+          <span>Gerenciamento de usuario</span>
         </a>
-        <a href="cliente.php" class="button-default bt-add">Adicionar novo cliente</a>
+        <a href="usuario.php" class="button-default bt-add">Adicionar novo usuario</a>
       </div>
       <div class="shadow-table">
         <table>
@@ -53,7 +53,7 @@
           </thead>
           <?php
           
-          $dados = $t->buscarCliente();
+          $dados = $t->buscarUsuario();
           if(count($dados) > 0){
             for ($i=0; $i < count($dados); $i++) { 
               echo "<tr>";
@@ -70,13 +70,13 @@
                 <a style="text-decoration: none; 
                           background-color: #8d3535;
                           color:#fff; border-radius: 4px;"
-                          href="geren-cliente.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
+                          href="geren-usuario.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
 
                           <!-- verificaçao de exluir-->
                           <?php
                             if(isset($_GET['id'])){
-                              $id_cliente = addslashes($_GET['id']);
-                            $t->excluirCliente($id_cliente);
+                              $id_usuario = addslashes($_GET['id']);
+                            $t->excluirUsuario($id_usuario);
                             }
                           ?>
               </td>

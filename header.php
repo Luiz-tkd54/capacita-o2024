@@ -13,6 +13,7 @@
         <div class="menu-drop">
           <a href="geren-cliente.php">Gerenciar clientes</a>
           <a href="geren-produtos.php">Gerenciar produtos</a>
+          <a href="geren-usuario.php">Gerenciar usuarios</a>
           <a href="cliente.php">Cadastrar cliente</a>
           <a href="cad-produto.php">Cadastrar produto</a>
           <a href="usuario.php">Cadastrar usuário</a>
