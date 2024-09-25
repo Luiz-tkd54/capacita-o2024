@@ -61,7 +61,12 @@
               for ($i=0; $i < count($dados); $i++) { 
                 echo "<tr>";
                 foreach ($dados[$i] as $k => $v) {
-                  echo "<td>".$v."</td>";
+                  if($k === 'imagem'){
+                    echo "<td><img src='$v' alt='arquivo/' style='width: 80px; height: auto; border: solid 2px #333;'></td>";
+                  }else{
+                    echo "<td>".$v."</td>";
+                  }
+                  
                 }
           ?>
                 <td>
