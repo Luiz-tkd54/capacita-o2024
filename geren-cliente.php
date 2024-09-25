@@ -71,6 +71,14 @@
                           background-color: #8d3535;
                           color:#fff; border-radius: 4px;"
                           href="geren-cliente.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
+
+                          <!-- verificaçao de exluir-->
+                          <?php
+                            if(isset($_GET['id'])){
+                              $id_cliente = addslashes($_GET['id']);
+                            $t->excluirCliente($id_cliente);
+                            }
+                          ?>
               </td>
         <?php
               echo "</tr>"; 
@@ -88,11 +96,3 @@
 
 </html>
 
-<!-- botao de exluir-->
-
-<?php
-  if(isset($_GET['id'])){
-    $id_cliente = addslashes($_GET['id']);
-    $t->excluirCliente($id_cliente);
-  }
-?>

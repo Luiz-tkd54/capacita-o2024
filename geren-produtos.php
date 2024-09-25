@@ -79,6 +79,15 @@
                               background-color: #8d3535;
                               color:#fff; border-radius: 4px;"
                               href="geren-produtos.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
+                              
+                              <!-- verificação de exluir  -->
+                              <?php
+                                if(isset($_GET['id'])){
+                                  $id_produto = addslashes($_GET['id']);
+                                  $t->excluirProduto($id_produto);
+                                }
+                              ?>
+
                 </td>
           <?php
                 echo "</tr>"; 
@@ -94,11 +103,3 @@
   </section>
 </body>
 </html>
-<!-- botao de exluir  -->
-
-<?php
-  if(isset($_GET['id'])){
-    $id_produto = addslashes($_GET['id']);
-    $t->excluirProduto($id_produto);
-  }
-?>
