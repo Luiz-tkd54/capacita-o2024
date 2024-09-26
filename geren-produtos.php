@@ -52,6 +52,7 @@
               <th>Descrição</th>
               <th>Valor</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <?php

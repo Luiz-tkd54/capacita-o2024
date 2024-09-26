@@ -41,7 +41,7 @@ public function __construct($dbname, $host, $user, $password)
 
     public function buscarCliente(){
         $busca = array();
-        $cliente = $this->pdo->prepare("SELECT *FROM cliente ORDER BY nome");
+        $cliente = $this->pdo->prepare("SELECT * FROM cliente ORDER BY nome");
         $cliente->execute();
         $busca = $cliente->fetchAll(PDO::FETCH_ASSOC);
         return $busca;
