@@ -21,6 +21,11 @@ public function __construct($dbname, $host, $user, $password)
         exit();
     }
 }
+
+public function getPDO() {
+    return $this->pdo;
+}
+
 // -----------------TABELA PRODUTOS ---------------------------------------
 
     public function buscarProdutos(){
@@ -36,6 +41,21 @@ public function __construct($dbname, $host, $user, $password)
         $excluir->bindValue(":id",$id);
         $excluir->execute();
     }
+
+// ----------------------NOVO PEDIDO --------------------------------------------
+
+
+public function buscarProdutosPorNome($nomeProduto){
+    $busca = array();
+    $produto = $this->pdo->prepare("SELECT * FROM produto WHERE nome LIKE :nomeProduto LIMIT 10");
+    $produto->bindValue(":nomeProduto", "%" . $nomeProduto . "%");
+    $produto->execute();
+    $busca = $produto->fetchAll(PDO::FETCH_ASSOC); // Retorna até 10 produtos
+    return $busca;
+}
+
+
+
 
 // ---------------------- TABELA CLIENTES -------------------------------
 
@@ -71,7 +91,6 @@ public function __construct($dbname, $host, $user, $password)
 
 
 }
-
 
 
 

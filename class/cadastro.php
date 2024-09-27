@@ -77,6 +77,11 @@ class Usuario{
         return $buscaDeNome->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function alterarSenha($email,$novaSenha){
+        
+    }
+
+
 }   
 
 // -------------------------CADASTRO DE CLIENTE---------------------------------------------------------------------
