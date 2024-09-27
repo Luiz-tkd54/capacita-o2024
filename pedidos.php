@@ -259,7 +259,7 @@ $(document).on('click', '#salvarPedidoBtn', function() {
         },
         success: function(response) {
             alert('Pedido salvo com sucesso!');
-            // window.location.href = 'dashboard.php'; // Redirecionar após salvar
+             window.location.href = 'dashboard.php'; // Redirecionar após salvar
         },
         error: function(err) {
             alert('Erro ao salvar o pedido.');
