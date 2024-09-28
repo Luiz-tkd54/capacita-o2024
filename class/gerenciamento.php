@@ -93,5 +93,50 @@ public function buscarProdutosPorNome($nomeProduto){
 }
 
 
+// --------------------------CONTAGEM PARA O DASHBOARD-----------------------------------------
+
+class Contagem {
+
+// conexão
+private $pdo;
+
+public function __construct($dbname, $host, $user, $password)
+{
+
+    try {
+
+    $this->pdo = new PDO("mysql:dbname=".$dbname.";host=".$host,$user,$password);
+
+    } catch (PDOException $e) {
+        echo "Erro com banco de dados: ".$e->getMessage();
+        exit();
+    }
+    catch (PDOException $e) {
+        echo "Erro generico".$e->getMessage();
+        exit();
+    }
+}
+// ----------------------- CLIENTE --------------------------------------
+    public function contarClientes(){
+        $contar = $this->pdo->prepare("SELECT COUNT(*) AS total FROM cliente");
+        $contar->execute();
+        return $contar->fetchColumn();
+    }
+// ----------------------- PRODUTO --------------------------------------
+
+public function contarProdutos(){
+    $contar = $this->pdo->prepare("SELECT COUNT(*) AS total FROM produto");
+    $contar->execute();
+    return $contar->fetchColumn();
+}
+
+// ----------------------- PEDIDOS --------------------------------------
+public function contarPedidos(){
+    $contar = $this->pdo->prepare("SELECT COUNT(*) AS total FROM pedido");
+    $contar->execute();
+    return $contar->fetchColumn();
+}
+}
+
 
 ?>

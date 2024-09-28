@@ -25,6 +25,13 @@
   <header>
     <?php
       require_once 'header.php';
+      require_once 'class/gerenciamento.php';
+      $c = new Contagem("capacitacao2024","localhost","root","");
+
+      $quantidadeCliente = $c->contarClientes();
+      $quantidadeProduto = $c->contarProdutos();
+      $quantidadePedido = $c->contarPedidos();
+
     ?>
   </header>
   <section class="page-index">
@@ -34,7 +41,7 @@
           <div class="d-flex justify-content-between">
             <div>
               <h2>Clientes</h2>
-              <span>444</span>
+              <span><?php echo " $quantidadeCliente"?></span>
             </div>
             <img src="assets/images/icon-users.svg" alt="">
           </div>
@@ -44,7 +51,7 @@
           <div class="d-flex justify-content-between">
             <div>
               <h2>Produtos</h2>
-              <span>444</span>
+              <span><?php echo " $quantidadeProduto"?></span>
             </div>
             <img src="assets/images/icon-product.svg" style="max-width: 76px;" alt="">
           </div>
@@ -54,7 +61,7 @@
           <div class="d-flex justify-content-between">
             <div>
               <h2>Pedidos</h2>
-              <span>444</span>
+              <span><?php echo " $quantidadePedido"?></span>
             </div>
             <img src="assets/images/icon-pedido.svg" alt="">
           </div>
