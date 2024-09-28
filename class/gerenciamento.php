@@ -42,6 +42,41 @@ public function getPDO() {
         $excluir->execute();
     }
 
+    // ----------------BOTAO DE EDITAR PRODUTO ----------------------------------- 
+
+    public function buscarProdutoPorId($id) {
+        $busca = $this->pdo->prepare("SELECT * FROM produto WHERE id = :id");
+        $busca->bindValue(":id", $id);
+        $busca->execute();
+        return $busca->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function atualizarProduto($id, $imagem, $nome, $sku, $quantidade, $descricao, $valor) {
+        $atualizar = $this->pdo->prepare("UPDATE produto SET imagem = :i, nome = :n, sku = :s, quantidade = :q,
+                                        descricao = :d, valor = :v WHERE id = :id");
+        $atualizar->bindValue(":i",$imagem);
+        $atualizar->bindValue(":n", $nome);
+        $atualizar->bindValue(":s", $sku);
+        $atualizar->bindValue(":q", $quantidade);
+        $atualizar->bindValue(":d", $descricao);
+        $atualizar->bindValue(":v", $valor);
+        $atualizar->bindValue(":id", $id);
+        return $atualizar->execute();   
+    }
+
+    public function atualizaruploadImagem($imagem){
+
+        $uploadDiretorio = 'arquivo/';
+        $uploadFile = $uploadDiretorio . basename($imagem['name']);
+
+        if(move_uploaded_file($imagem['tmp_name'], $uploadFile)){
+            return $uploadFile;
+        }else{
+            echo "Erro ao salvar a imagem.";
+            return false;
+        }
+    }
+
 // ----------------------NOVO PEDIDO --------------------------------------------
 
 
