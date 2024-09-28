@@ -67,6 +67,18 @@ class Usuario{
             return false;
         }
     }
+//----------------------ALTERAR A SENHA -------------------------------------------------------
+
+    public function alterarSenha($email,$novaSenha){
+
+        $novaSenhaCriptografada = sha1($novaSenha);
+        $alterar = $this->pdo->prepare("UPDATE usuario SET senha = :s WHERE email = :e");
+        $alterar->bindValue(":s",$novaSenhaCriptografada);
+        $alterar->bindValue(":e",$email);
+        return $alterar->execute(); 
+    }
+
+
 
 //---------------------NOME NO DROPMENU ----------------------------------------------------------
 
@@ -75,10 +87,6 @@ class Usuario{
         $buscaDeNome = $this->pdo->prepare("SELECT nome FROM usuario WHERE email = ?");
         $buscaDeNome->execute([$email]);
         return $buscaDeNome->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function alterarSenha($email,$novaSenha){
-        
     }
 
 

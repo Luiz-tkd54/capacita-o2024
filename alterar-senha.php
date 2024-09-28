@@ -23,7 +23,7 @@
 
 <?php
   require_once 'class/cadastro.php';
-  $c = new Cliente("capacitacao2024","localhost","root","");  
+  $u = new Usuario("capacitacao2024","localhost","root","");  
 ?>
 
 <body>
@@ -32,6 +32,23 @@
       require_once 'header.php';
     ?>
   </header>
+
+  <?php
+    // verifica se o formulario foi enviado 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $email = $_POST['email'];
+      $novaSenha = $_POST['nova-senha'];
+
+      if($u->alterarSenha($email,$novaSenha)){
+        echo "Senha alterada com sucesso";
+      }else{
+        echo "Erro ao alterar a senha";
+      }
+
+    }
+
+  ?>
+
   <section class="page-cadastro-cliente paddingBottom50">
     <div class="container">
       <div>
