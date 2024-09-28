@@ -73,6 +73,24 @@ public function buscarProdutosPorNome($nomeProduto){
         $excluir->execute();
     }
 
+    public function buscarClientePorId($id) {
+        $busca = $this->pdo->prepare("SELECT * FROM cliente WHERE id = :id");
+        $busca->bindValue(":id", $id);
+        $busca->execute();
+        return $busca->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function atualizarCliente($id, $nome, $cpf, $data_nascimento, $email, $telefone) {
+        $atualizar = $this->pdo->prepare("UPDATE cliente SET nome = :n, cpf = :c, data_nascimento = :d, email = :e, telefone = :t WHERE id = :id");
+        $atualizar->bindValue(":n", $nome);
+        $atualizar->bindValue(":c", $cpf);
+        $atualizar->bindValue(":d", $data_nascimento);
+        $atualizar->bindValue(":e", $email);
+        $atualizar->bindValue(":t", $telefone);
+        $atualizar->bindValue(":id", $id);
+        return $atualizar->execute();
+    }
+
 // -------------------------TABELA USUARIOS ---------------------------------
 
     public function buscarUsuario(){

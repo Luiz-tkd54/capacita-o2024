@@ -65,7 +65,7 @@
                 <a style="text-decoration: none;
                           background-color: #367299; 
                           color:#fff; border-radius: 4px;"
-                           href="">Editar</a> 
+                           href="editar-cliente.php?id=<?php echo $dados[$i]['id']; ?>">Editar</a> 
      
                 <a style="text-decoration: none; 
                           background-color: #8d3535;
