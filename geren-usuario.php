@@ -65,7 +65,7 @@
                 <a style="text-decoration: none;
                           background-color: #367299; 
                           color:#fff; border-radius: 4px;"
-                           href="">Editar</a> 
+                           href="editar-usuario.php?id=<?php echo $dados[$i]['id']; ?>">Editar</a> 
      
                 <a style="text-decoration: none; 
                           background-color: #8d3535;
@@ -77,6 +77,7 @@
                             if(isset($_GET['id'])){
                               $id_usuario = addslashes($_GET['id']);
                             $t->excluirUsuario($id_usuario);
+                            header("location: geren-usuario.php");
                             }
                           ?>
               </td>

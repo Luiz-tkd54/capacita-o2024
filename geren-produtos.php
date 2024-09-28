@@ -86,6 +86,7 @@
                                 if(isset($_GET['id'])){
                                   $id_produto = addslashes($_GET['id']);
                                   $t->excluirProduto($id_produto);
+                                  header("location: geren-produtos.php");
                                 }
                               ?>
 

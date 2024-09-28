@@ -73,6 +73,8 @@ public function buscarProdutosPorNome($nomeProduto){
         $excluir->execute();
     }
 
+// ----------------BOTAO DE EDITAR CLIENTE ----------------------------------- 
+
     public function buscarClientePorId($id) {
         $busca = $this->pdo->prepare("SELECT * FROM cliente WHERE id = :id");
         $busca->bindValue(":id", $id);
@@ -107,6 +109,25 @@ public function buscarProdutosPorNome($nomeProduto){
         $excluir->execute();
     }
 
+// ----------------BOTAO DE EDITAR USUARIO ----------------------------------- 
+
+    public function buscarUsuarioPorId($id) {
+        $busca = $this->pdo->prepare("SELECT * FROM usuario WHERE id = :id");
+        $busca->bindValue(":id", $id);
+        $busca->execute();
+        return $busca->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function atualizarUsuario($id, $nome, $cpf, $data_nascimento, $email, $telefone) {
+        $atualizar = $this->pdo->prepare("UPDATE usuario SET nome = :n, cpf = :c, data_nascimento = :d, email = :e, telefone = :t WHERE id = :id");
+        $atualizar->bindValue(":n", $nome);
+        $atualizar->bindValue(":c", $cpf);
+        $atualizar->bindValue(":d", $data_nascimento);
+        $atualizar->bindValue(":e", $email);
+        $atualizar->bindValue(":t", $telefone);
+        $atualizar->bindValue(":id", $id);
+        return $atualizar->execute();
+    }
 
 }
 

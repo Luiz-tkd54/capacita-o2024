@@ -77,6 +77,7 @@
                             if(isset($_GET['id'])){
                               $id_cliente = addslashes($_GET['id']);
                             $t->excluirCliente($id_cliente);
+                            header("location: geren-cliente.php");
                             }
                           ?>
               </td>
