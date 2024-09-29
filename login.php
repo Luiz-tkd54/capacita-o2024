@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="stylesheet" href="https://use.typekit.net/tvf0cut.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         header("Location: dashboard.php");
         exit();
       }else{ 
-        echo "Email ou senha invalidos";
+
       }
     }
   ?>
@@ -55,11 +56,13 @@
           <div class="input-login">
             <div>
               <label class="input-label-login">E-mail</label>
-              <input type="text" class="email-input" id="data-login" name="email">
+              <input type="text" class="email-input required" id="data-login" name="email" oninput=" emailValidate()">
+              <p id="error-message" style="color: #e63636; display: none;">E-mail inválido!</p> 
             </div>
             <div>
               <label class="input-label-password">Senha</label>
-              <input type="password" class="password-input" id="data-password" name="password">
+              <input type="password" class="password-input required" id="data-password" name="password" oninput="passwordValidate()">
+              <p id="password-error" style="color: #e63636; display: none;">Senha invalida</p>
             </div>
             <div 
               class="faça-cadastro">Ainda não é cadastrado? <a href="cadastre-se.php">Cadastre-se</a>
@@ -71,5 +74,50 @@
     </div>
   </section>
 </body>
+<script>
+  const form = document.getElementById('form-input-login');
+  const campos = document.querySelectorAll('.required');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  // erros 
+  function setError(login){
+    campos[login].style.border = '2px solid #e63636';  
+    if(login === 0 ){
+      document.getElementById('error-message').style.display = 'block';
+    }else if(login === 1){
+      document.getElementById('password-error').style.display = 'block';
+    }
+    
+  }
+
+  function removeError(login){
+    campos[login].style.border = '';
+    if(login === 0){
+      document.getElementById('error-message').style.display = 'none';
+    }else if(login === 1){
+      document.getElementById('password-error').style.display = 'none';
+    }
+    
+  }
+
+  // validando email
+  function emailValidate(){
+    if(!emailRegex.test(campos[0].value)){
+      setError(0);
+    }else{
+     removeError(0);
+    }
+  }
+
+  function passwordValidate(){
+    if(campos[1].value.length < 4){
+      setError(1);
+    }else{
+      removeError(1);
+    }
+
+  }
+
+
+</script>
 </html>
