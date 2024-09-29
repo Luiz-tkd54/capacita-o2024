@@ -47,7 +47,7 @@
           if(!$u->cadastrarUsuario($nome, $data_nascimento, $cpf, $telefone, $email, $senha )){
             echo "Email ja esta cadastrado";
           }else{
-            echo "Usuario cadastrado com sucesso!";
+            echo '<div class="mensagem-sucesso">Usuário cadastrado com sucesso</div>';
           }
           
         }else{
@@ -56,6 +56,13 @@
 
       }
       ?>
+  <style> 
+    .mensagem-sucesso {
+    font-size: 1.5em; 
+    color: #008000; 
+    margin-top: 20px; 
+    } 
+  </style>
       <div class="container-small">
         <form method="POST" id="form-cadastro-usuario">
           <div class="bloco-inputs">

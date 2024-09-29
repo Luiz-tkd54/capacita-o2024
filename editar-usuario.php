@@ -62,7 +62,10 @@
         </header>
         <section class="page-editar-usuario paddingBottom50">
             <div class="container">
-                <h2>Editar usuario</h2>
+                <div>
+                    <span class="link-voltar">Editar usuário</span>
+                    </a>
+                </div>
                 <form method="post">
                     <div class="bloco-inputs">
                         <div>

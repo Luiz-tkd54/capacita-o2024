@@ -65,7 +65,7 @@
           if(!$p->CadastrarProduto($nome, $sku, $quantidade, $valor, $descricao, $caminhoImagem)){
             echo "SKU ja esta cadastrado";
           }else{
-            echo "Produto cadastrado com sucesso!";
+            echo '<div class="mensagem-sucesso">Produto cadastrado com sucesso</div>';
           }
           
         }else{
@@ -75,8 +75,16 @@
           }
       
     }
-    
+
     ?>
+  <style> 
+    .mensagem-sucesso {
+    font-size: 1.5em; 
+    color: #008000; 
+    margin-top: 20px; 
+    } 
+  </style>
+
 
       <div class="container-small">
         <form method="post" enctype="multipart/form-data" id="form-cadastro-produto">

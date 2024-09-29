@@ -56,7 +56,7 @@
           if(!$c->CadastrarCliente($nome, $cpf, $email, $data_nascimento, $telefone )){
             echo "Email ja esta cadastrado";
           }else{
-            echo "Cliente cadastrado com sucesso!";
+            echo '<div class="mensagem-sucesso">Cliente cadastrado com sucesso</div>';
           }
           
         }else{
@@ -65,7 +65,13 @@
 
       }
       ?>
-
+  <style> 
+    .mensagem-sucesso {
+    font-size: 1.5em; 
+    color: #008000; 
+    margin-top: 20px; 
+    } 
+  </style>
       <div class="container-small">
         <form method="post" id="form-cadastro-cliente">
           <div class="bloco-inputs">

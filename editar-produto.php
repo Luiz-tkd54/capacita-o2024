@@ -71,9 +71,7 @@
     <section class="page-cadastro-produto paddingBottom50">
     <div class="container">
       <div>
-        <a href="dashboard.php" class="link-voltar">
-          <img src="assets/images/arrow.svg" alt="">
-          <span>Alterar de produto</span>
+          <span class="link-voltar">Editar produto</span>
         </a>
       </div>
       <div class="container-small">

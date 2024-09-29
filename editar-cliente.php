@@ -62,7 +62,10 @@ if (isset($_GET['id'])) {
     </header>
     <section class="page-editar-cliente paddingBottom50">
         <div class="container">
-            <h2>Editar Cliente</h2>
+            <div class="link-voltar">
+            <span>Editar cliente</span>
+            </a>
+            </div>
             <form method="post">
                 <div class="bloco-inputs">
                     <div>
