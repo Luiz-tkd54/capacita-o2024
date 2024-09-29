@@ -29,20 +29,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Inserir cada produto na tabela "pedido_produto"
         foreach ($produtos as $produto) {
             // Buscar o ID do produto baseado no nome
-            $produtoQuery = $pdo->prepare("SELECT id FROM produto WHERE nome = :nome LIMIT 1");
+            $produtoQuery = $pdo->prepare("SELECT id, quantidade FROM produto WHERE nome = :nome LIMIT 1");
             $produtoQuery->bindValue(':nome', $produto['nome']);
             $produtoQuery->execute();
             $produtoData = $produtoQuery->fetch(PDO::FETCH_ASSOC);
 
             if ($produtoData) {
                 $idProduto = $produtoData['id'];
+                $quantidade = $produtoData['quantidade'];
+                // verifica se tem estoque    
+                if($quantidade >= $produto['quantidade']){
 
-                // Inserir o produto no pedido
-                $insertPedidoProduto = $pdo->prepare("INSERT INTO pedido_produto (id_pedido, id_produto, quantidade) VALUES (:id_pedido, :id_produto, :quantidade)");
-                $insertPedidoProduto->bindValue(':id_pedido', $idPedido);
-                $insertPedidoProduto->bindValue(':id_produto', $idProduto);
-                $insertPedidoProduto->bindValue(':quantidade', $produto['quantidade']);
-                $insertPedidoProduto->execute();
+                    // Inserir o produto no pedido
+                    $insertPedidoProduto = $pdo->prepare("INSERT INTO pedido_produto (id_pedido, id_produto, quantidade) VALUES (:id_pedido, :id_produto, :quantidade)");
+                    $insertPedidoProduto->bindValue(':id_pedido', $idPedido);
+                    $insertPedidoProduto->bindValue(':id_produto', $idProduto);
+                    $insertPedidoProduto->bindValue(':quantidade', $produto['quantidade']);
+                    $insertPedidoProduto->execute();
+
+                    // atualiza a quantidade do estoque 
+
+                    $novaQuantidade = $quantidade - $produto['quantidade'];
+                    $updateQuantidade = $pdo->prepare("UPDATE produto SET quantidade = :nq WHERE id = :id");
+                    $updateQuantidade->bindValue(":nq",$novaQuantidade);
+                    $updateQuantidade->bindValue(":id",$idProduto);
+                    $updateQuantidade->execute();
+                }else{
+                    echo json_encode(['staus'=> 'error','message'=>'Estoque insuficiente'.$produto['nome']]);
+                }
+                
             }
         }
         // atualizar quantidade do produto a fazer ainda 
